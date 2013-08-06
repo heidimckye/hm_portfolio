@@ -1,13 +1,59 @@
-var express    = require('express')
-  , app        = express()
-  , server     = require('./server')
-  , reqHandle  = require('./request')
+var HMcKye = angular.module('HMcKye', []);
 
-app.use(express.static(__dirname + '/public'));
+HMcKye.config(function($routeProvider) {
+  $routeProvider
+	   .when('/', {
+	     controller: 'HomeCtrl',
+	     templateUrl: 'views/home.html'
+	   })
+	   .when('/about', {
+	     controller: 'AboutCtrl',
+	     templateUrl: 'views/about.html'
+	   })
+	   .when('/photography', {
+	     controller: 'PhotographyCtrl',
+	     templateUrl: 'views/photography.html'
+	   })
+	   .when('/writing', {
+	     controller: 'WritingCtrl',
+	     templateUrl: 'views/writing.html'
+	   })
+	   .when('/blog', {
+	     controller: 'BlogCtrl',
+	     templateUrl: 'views/blog.html'
+	   })
 
-app.get('/', function(req,res){
-  console.log("Service!");
-	reqHandle.start(req,res);
+
+	   .otherwise({ redirectTo: '/' });
+})
+
+HMcKye.controller('MainCtrl', function($scope,$location) {
+    $scope.navClick = function(href){
+    	console.log(href);
+    	$location.url(href);
+    }
 });
 
-server.start(app);
+HMcKye.controller('HomeCtrl', function($scope,$location) {
+
+});
+
+HMcKye.controller('AboutCtrl', function($scope,$location) {
+
+
+});
+
+HMcKye.controller('PhotographyCtrl', function($scope,$location) {
+
+
+});
+
+HMcKye.controller('WritingCtrl', function($scope,$location) {
+
+
+});
+
+HMcKye.controller('BlogCtrl', function($scope,$location) {
+
+
+});
